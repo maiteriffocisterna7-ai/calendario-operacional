@@ -182,11 +182,14 @@ input[data-done],input[data-sdone],#iAllDone{accent-color:var(--done)}
 .envh{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:flex-start}
 .envh .hint{max-width:70ch;margin-top:2px}
 .tblw{overflow-x:auto;min-width:0}
-table.env{border-collapse:collapse;width:100%;min-width:900px;font-size:13px}
+table.env{border-collapse:collapse;width:100%;min-width:1080px;font-size:13px}
 table.env th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;padding:6px;border-bottom:1px solid var(--line);white-space:nowrap}
 table.env td{padding:4px 6px;border-bottom:1px solid var(--line);vertical-align:middle}
 table.env td input,table.env td select{width:100%}
 table.env tr.fut td{background:color-mix(in srgb,var(--accent) 5%,var(--surface))}
+table.env tr.sent td{background:color-mix(in srgb,var(--done) 9%,var(--surface))}
+table.env td.ckc{text-align:center}
+table.env td.ckc .ck{margin:0 auto;width:20px;height:20px;font-size:14px}
 .tipo{display:inline-block;font-size:11px;font-weight:600;border-radius:999px;padding:1px 8px;background:color-mix(in srgb,#b5543c 20%,var(--surface));white-space:nowrap}
 .tipo.min{background:color-mix(in srgb,var(--accent) 18%,var(--surface))}
 button.x.arm{color:var(--bad);font-size:12px;font-weight:600}
@@ -336,7 +339,7 @@ let state;
 try { state = JSON.parse(localStorage.getItem(KEY)||'null'); } catch(e){ state = null; }
 if (!state || !Array.isArray(state.types) || !Array.isArray(state.items)) state = sampleState();
 /* Actividades traídas del calendario compartido: se agregan una sola vez, sin borrar ni cambiar lo que ya hay */
-const SEED = {"v":"compartido-2026-11-13","cfg":{
+const SEED = {"v":"compartido-2026-11-13-b","cfg":{
   "types": [
     {
       "color": "#1f6f8b",
@@ -713,28 +716,398 @@ const SEED = {"v":"compartido-2026-11-13","cfg":{
       ]
     }
   ]
-},"items":[],"envios":[]};
+},"items":[{
+  "fields": {},
+  "id": "1llg3ze",
+  "label": "SULFATACION 38 A LA 40",
+  "notes": "Mineral 21",
+  "stages": [
+    {
+      "at": "2026-11-09T09:00",
+      "done": true,
+      "name": "Preparación solución de sulfatación"
+    },
+    {
+      "at": "2026-11-10T09:00",
+      "done": true,
+      "name": "Inicio sulfatación"
+    },
+    {
+      "at": "2026-11-16T09:00",
+      "done": false,
+      "name": "Lavado"
+    },
+    {
+      "at": "2026-11-19T09:00",
+      "done": false,
+      "name": "Retiro del horno"
+    }
+  ],
+  "typeId": "sulf"
+},{
+  "fields": {},
+  "id": "4f3t02r",
+  "label": "Sulfataciones 29a la 36",
+  "notes": "M-03-M-056",
+  "stages": [
+    {
+      "at": "2026-11-04T09:00",
+      "done": true,
+      "name": "Preparación solución de sulfatación"
+    },
+    {
+      "at": "2026-11-05T09:00",
+      "done": true,
+      "name": "Inicio sulfatación"
+    },
+    {
+      "at": "2026-11-11T09:00",
+      "done": true,
+      "name": "Lavado"
+    },
+    {
+      "at": "2026-11-16T09:00",
+      "done": false,
+      "name": "Retiro del horno"
+    }
+  ],
+  "typeId": "sulf"
+},{
+  "fields": {
+    "analisis": "Cu, CuSec, Fe, Fe Soluble",
+    "area": "IF",
+    "envios": "Si",
+    "mineral": "M-20C",
+    "ripio": "Sí"
+  },
+  "id": "bp1bbhx",
+  "label": "COL 310-312",
+  "notes": "",
+  "stages": [
+    {
+      "at": "2026-11-18T09:00",
+      "done": false,
+      "name": "Inicio lavado de columna (5 días)"
+    },
+    {
+      "at": "2026-11-23T09:00",
+      "done": false,
+      "name": "Inicio drenaje de columna (3 días)"
+    },
+    {
+      "at": "2026-11-26T09:00",
+      "done": false,
+      "name": "Descarga de columna y muestreo + ingreso a secado"
+    },
+    {
+      "at": "2026-11-30T09:00",
+      "done": false,
+      "name": "Salida del horno y pesaje de ripio seco"
+    }
+  ],
+  "typeId": "desc"
+},{
+  "fields": {
+    "analisis": "Cu, CuSec, Fe, Fe Soluble, Mo, Ag, Au, Co, Ni",
+    "area": "MS",
+    "envios": "Si",
+    "mineral": "M-97"
+  },
+  "id": "c6xx2kr",
+  "label": "COL 325-326",
+  "notes": "",
+  "stages": [
+    {
+      "at": "2026-11-13T09:00",
+      "done": true,
+      "name": "Inicio lavado de columna (5 días)"
+    },
+    {
+      "at": "2026-11-18T09:00",
+      "done": false,
+      "name": "Inicio drenaje de columna (3 días)"
+    },
+    {
+      "at": "2026-11-23T09:00",
+      "done": false,
+      "name": "Descarga de columna y muestreo + ingreso a secado"
+    },
+    {
+      "at": "2026-11-27T09:00",
+      "done": false,
+      "name": "Salida del horno y pesaje de ripio seco"
+    }
+  ],
+  "typeId": "desc"
+},{
+  "fields": {
+    "analisis": "Cu, CuSec, Fe, Fe Soluble, Mo, Ag, Au, Co, Ni",
+    "area": "MS",
+    "envios": "Si",
+    "mineral": "M-97",
+    "ripio": "Sí"
+  },
+  "id": "fld41gt",
+  "label": "COL 327",
+  "notes": "",
+  "stages": [
+    {
+      "at": "2026-11-24T09:00",
+      "done": false,
+      "name": "Inicio lavado de columna (5 días)"
+    },
+    {
+      "at": "2026-11-29T09:00",
+      "done": false,
+      "name": "Inicio drenaje de columna (3 días)"
+    },
+    {
+      "at": "2026-12-02T09:00",
+      "done": false,
+      "name": "Descarga de columna y muestreo + ingreso a secado"
+    },
+    {
+      "at": "2026-12-07T09:00",
+      "done": false,
+      "name": "Salida del horno y pesaje de ripio seco"
+    }
+  ],
+  "typeId": "desc"
+},{
+  "fields": {
+    "analisis": "Cu, CuSec, Fe, Fe Soluble, Mo, Ag, Au, Co, Ni",
+    "area": "MS",
+    "envios": "Si",
+    "mineral": "M-58",
+    "ripio": "Sí"
+  },
+  "id": "idpdvc7",
+  "label": "COL 320",
+  "notes": "",
+  "stages": [
+    {
+      "at": "2026-11-10T09:00",
+      "done": true,
+      "name": "Inicio lavado de columna (5 días)"
+    },
+    {
+      "at": "2026-11-15T09:00",
+      "done": true,
+      "name": "Inicio drenaje de columna (3 días)"
+    },
+    {
+      "at": "2026-11-18T09:00",
+      "done": false,
+      "name": "Descarga de columna y muestreo + ingreso a secado"
+    },
+    {
+      "at": "2026-11-23T09:00",
+      "done": false,
+      "name": "Salida del horno y pesaje de ripio seco"
+    }
+  ],
+  "typeId": "desc"
+},{
+  "fields": {},
+  "id": "q3rs1v3",
+  "label": "Mineral 20 C",
+  "notes": "",
+  "stages": [
+    {
+      "at": "2026-11-17T09:00",
+      "done": false,
+      "name": "Determinación densidad aparente"
+    }
+  ],
+  "typeId": "dap"
+},{
+  "fields": {},
+  "id": "rl3gudy",
+  "label": "MINERAL 20 C",
+  "notes": "",
+  "stages": [
+    {
+      "at": "2026-11-17T09:00",
+      "done": false,
+      "name": "Inicio densidad real"
+    },
+    {
+      "at": "2026-11-18T09:00",
+      "done": false,
+      "name": "Término densidad real"
+    }
+  ],
+  "typeId": "dreal"
+},{
+  "fields": {
+    "analisis": "Cu, CuSec, Fe, Fe Soluble",
+    "area": "IF",
+    "envios": "Si",
+    "mineral": "M-49"
+  },
+  "id": "w10r05s",
+  "label": "COL 356-357",
+  "notes": "",
+  "stages": [
+    {
+      "at": "2026-11-16T09:00",
+      "done": false,
+      "name": "Inicio lavado de columna (5 días)"
+    },
+    {
+      "at": "2026-11-21T09:00",
+      "done": false,
+      "name": "Inicio drenaje de columna (3 días)"
+    },
+    {
+      "at": "2026-11-24T09:00",
+      "done": false,
+      "name": "Descarga de columna y muestreo + ingreso a secado"
+    },
+    {
+      "at": "2026-11-30T09:00",
+      "done": false,
+      "name": "Salida del horno y pesaje de ripio seco"
+    }
+  ],
+  "typeId": "desc"
+},{
+  "fields": {
+    "analisis": "Cu, CuSec, Fe, Fe Soluble",
+    "area": "IF",
+    "envios": "Si",
+    "mineral": "M-66",
+    "ripio": "Sí"
+  },
+  "id": "xj0ek7b",
+  "label": "COL 358-359",
+  "notes": "",
+  "stages": [
+    {
+      "at": "2026-11-09T09:00",
+      "done": true,
+      "name": "Inicio lavado de columna (5 días)"
+    },
+    {
+      "at": "2026-11-14T09:00",
+      "done": true,
+      "name": "Inicio drenaje de columna (3 días)"
+    },
+    {
+      "at": "2026-11-17T09:00",
+      "done": false,
+      "name": "Descarga de columna y muestreo + ingreso a secado"
+    },
+    {
+      "at": "2026-11-23T09:00",
+      "done": false,
+      "name": "Salida del horno y pesaje de ripio seco"
+    }
+  ],
+  "typeId": "desc"
+},{
+  "fields": {},
+  "id": "xzdcfy6",
+  "label": "CH 5-6",
+  "notes": "M-100",
+  "stages": [
+    {
+      "at": "2026-11-16T09:00",
+      "done": false,
+      "name": "Carga e inicio de riego"
+    },
+    {
+      "at": "2026-11-18T19:00",
+      "done": false,
+      "name": "Inicio prueba"
+    },
+    {
+      "at": "2026-11-19T19:00",
+      "done": false,
+      "name": "Drenaje"
+    },
+    {
+      "at": "2026-11-20T19:00",
+      "done": false,
+      "name": "Descarga"
+    }
+  ],
+  "typeId": "chsa"
+}],"envios":[{
+  "analisis": "Cu, CuSec, Fe, Fe Soluble",
+  "cc": "",
+  "cond": "",
+  "fecha": "2026-11-30",
+  "from": "bp1bbhx",
+  "id": "r-bp1bbhx",
+  "muestra": "COL 310-312",
+  "recep": "",
+  "tipo": "Ripio"
+},{
+  "analisis": "Cu, CuSec, Fe, Fe Soluble, Mo, Ag, Au, Co, Ni",
+  "cc": "",
+  "cond": "",
+  "fecha": "2026-11-27",
+  "from": "c6xx2kr",
+  "id": "r-c6xx2kr",
+  "muestra": "COL 325-326",
+  "recep": "",
+  "tipo": "Ripio"
+},{
+  "analisis": "Cu, CuSec, Fe, Fe Soluble, Mo, Ag, Au, Co, Ni",
+  "cc": "",
+  "cond": "",
+  "fecha": "2026-12-07",
+  "from": "fld41gt",
+  "id": "r-fld41gt",
+  "muestra": "COL 327",
+  "recep": "",
+  "tipo": "Ripio"
+},{
+  "analisis": "Cu, CuSec, Fe, Fe Soluble, Mo, Ag, Au, Co, Ni",
+  "cc": "",
+  "cond": "",
+  "fecha": "2026-11-23",
+  "from": "idpdvc7",
+  "id": "r-idpdvc7",
+  "muestra": "COL 320",
+  "recep": "",
+  "tipo": "Ripio"
+},{
+  "analisis": "Cu, CuSec, Fe, Fe Soluble",
+  "cc": "",
+  "cond": "",
+  "fecha": "2026-11-30",
+  "from": "w10r05s",
+  "id": "r-w10r05s",
+  "muestra": "COL 356-357",
+  "recep": "",
+  "tipo": "Ripio"
+},{
+  "analisis": "Cu, CuSec, Fe, Fe Soluble",
+  "cc": "",
+  "cond": "",
+  "fecha": "2026-11-23",
+  "from": "xj0ek7b",
+  "id": "r-xj0ek7b",
+  "muestra": "COL 358-359",
+  "recep": "",
+  "tipo": "Ripio"
+}]};
 try { if (localStorage.getItem(KEY+'-seed')!==SEED.v){
+  state.items = state.items.filter(i=>!i.sample);   // quita los ejemplos de la versión anterior
   if (!state.items.length && SEED.cfg && Array.isArray(SEED.cfg.types)) state.types = SEED.cfg.types;
   SEED.items.forEach(it=>{ if (!state.items.some(x=>x.id===it.id)) state.items.push(it); });
   state.envios ||= []; SEED.envios.forEach(e=>{ if (!state.envios.some(x=>x.id===e.id)) state.envios.push(e); });
   localStorage.setItem(KEY, JSON.stringify(state)); localStorage.setItem(KEY+'-seed', SEED.v);
 } } catch(e){}
 /* Envíos de la planilla «Envio a procesamiento.xlsx»: se agregan una sola vez y no se duplican */
-const SEED_XL = [];
-try { if (localStorage.getItem(KEY+'-seed-xl')!=='1'){
+const SEED_XL = [{"id":"x-20261015-ripio-pla-11","tipo":"Ripio","fecha":"2026-10-15","cc":"MS","muestra":"Ripio PLA 11","cond":"Si","recep":"","analisis":"No"},{"id":"x-20261021-m-21","tipo":"Mineral","fecha":"2026-10-21","cc":"RD","muestra":"M-21","cond":"Si","recep":"2026-11-02","analisis":"N/A"},{"id":"x-20261021-m-51","tipo":"Mineral","fecha":"2026-10-21","cc":"RD","muestra":"M-51","cond":"Si","recep":"2026-11-02","analisis":"N/A"},{"id":"x-20261028-m-3","tipo":"Mineral","fecha":"2026-10-28","cc":"RD","muestra":"M-3","cond":"Si","recep":"2026-11-04","analisis":"N/A"},{"id":"x-20261028-m-56","tipo":"Mineral","fecha":"2026-10-28","cc":"RD","muestra":"M-56","cond":"Si","recep":"2026-11-04","analisis":"N/A"},{"id":"x-20261103-m-21","tipo":"Mineral","fecha":"2026-11-03","cc":"RD","muestra":"M-21","cond":"Si","recep":"2026-11-09","analisis":"N/A"},{"id":"x-20261103-m-1","tipo":"Mineral","fecha":"2026-11-03","cc":"RD","muestra":"M-1","cond":"Si","recep":"2026-11-09","analisis":"N/A"},{"id":"x-20261104-m-100","tipo":"Mineral","fecha":"2026-11-04","cc":"IF","muestra":"M-100","cond":"Si","recep":"","analisis":""},{"id":"x-20261028-sulfatacion-17","tipo":"Ripio","fecha":"2026-10-28","cc":"RD","muestra":"SULFATACION  17","cond":"Si","recep":"","analisis":""},{"id":"x-20261028-sulfatacion-18","tipo":"Ripio","fecha":"2026-10-28","cc":"RD","muestra":"SULFATACION  18","cond":"Si","recep":"","analisis":""},{"id":"x-20261028-sulfatacion-19","tipo":"Ripio","fecha":"2026-10-28","cc":"RD","muestra":"SULFATACION  19","cond":"Si","recep":"","analisis":""},{"id":"x-20261028-sulfatacion-20","tipo":"Ripio","fecha":"2026-10-28","cc":"RD","muestra":"SULFATACION  20","cond":"Si","recep":"","analisis":""},{"id":"x-20261028-sulfatacion-21","tipo":"Ripio","fecha":"2026-10-28","cc":"RD","muestra":"SULFATACION  21","cond":"Si","recep":"","analisis":""},{"id":"x-20261028-sulfatacion-22","tipo":"Ripio","fecha":"2026-10-28","cc":"RD","muestra":"SULFATACION  22","cond":"Si","recep":"","analisis":""},{"id":"x-20261028-sulfatacion-23","tipo":"Ripio","fecha":"2026-10-28","cc":"RD","muestra":"SULFATACION  23","cond":"Si","recep":"","analisis":""},{"id":"x-20261028-sulfatacion-24","tipo":"Ripio","fecha":"2026-10-28","cc":"RD","muestra":"SULFATACION  24","cond":"Si","recep":"","analisis":""},{"id":"x-20261028-sulfatacion-25","tipo":"Ripio","fecha":"2026-10-28","cc":"RD","muestra":"SULFATACION  25","cond":"Si","recep":"","analisis":""},{"id":"x-20261028-sulfatacion-26","tipo":"Ripio","fecha":"2026-10-28","cc":"RD","muestra":"SULFATACION  26","cond":"Si","recep":"","analisis":""},{"id":"x-20261028-sulfatacion-27","tipo":"Ripio","fecha":"2026-10-28","cc":"RD","muestra":"SULFATACION  27","cond":"Si","recep":"","analisis":""},{"id":"x-20261028-sulfatacion-28","tipo":"Ripio","fecha":"2026-10-28","cc":"RD","muestra":"SULFATACION  28","cond":"Si","recep":"","analisis":""},{"id":"x-20261110-ripio-g11m1","tipo":"Ripio","fecha":"2026-11-10","cc":"SG","muestra":"RIPIO G11M1","cond":"Si","recep":"","analisis":""},{"id":"x-20261110-ripio-g11m2","tipo":"Ripio","fecha":"2026-11-10","cc":"SG","muestra":"RIPIO G11M2","cond":"Si","recep":"","analisis":""},{"id":"x-20261110-ripio-g11m3","tipo":"Ripio","fecha":"2026-11-10","cc":"SG","muestra":"RIPIO G11M3","cond":"Si","recep":"","analisis":""},{"id":"x-20261110-ripio-g13","tipo":"Ripio","fecha":"2026-11-10","cc":"SG","muestra":"RIPIO G13","cond":"Si","recep":"","analisis":""},{"id":"x-20261110-ripio-g14","tipo":"Ripio","fecha":"2026-11-10","cc":"SG","muestra":"RIPIO G14","cond":"Si","recep":"","analisis":""},{"id":"x-20261111-ripio-313","tipo":"Ripio","fecha":"2026-11-11","cc":"MS","muestra":"RIPIO 313","cond":"Si","recep":"","analisis":""},{"id":"x-20261111-ripio-314","tipo":"Ripio","fecha":"2026-11-11","cc":"MS","muestra":"RIPIO 314","cond":"Si","recep":"","analisis":""},{"id":"x-20261111-ripio-329","tipo":"Ripio","fecha":"2026-11-11","cc":"RD","muestra":"RIPIO 329","cond":"Si","recep":"","analisis":""},{"id":"x-20261111-ripio-330","tipo":"Ripio","fecha":"2026-11-11","cc":"RD","muestra":"RIPIO 330","cond":"Si","recep":"","analisis":""},{"id":"x-20261111-ripio-335","tipo":"Ripio","fecha":"2026-11-11","cc":"IF","muestra":"RIPIO 335","cond":"No","recep":"","analisis":""},{"id":"x-20261111-ripio-336","tipo":"Ripio","fecha":"2026-11-11","cc":"IF","muestra":"RIPIO 336","cond":"No","recep":"","analisis":""},{"id":"x-20261111-ripio-353","tipo":"Ripio","fecha":"2026-11-11","cc":"IF","muestra":"RIPIO 353","cond":"No","recep":"","analisis":""}];
+try { if (localStorage.getItem(KEY+'-seed-xl')!=='2'){
   state.envios ||= [];
   const k = e => (e.fecha||'')+'|'+String(e.muestra||'').trim().toLowerCase();
   SEED_XL.forEach(e=>{ if (!state.envios.some(x=>x.id===e.id || (!x.del && k(x)===k(e)))) state.envios.push(e); });
-  localStorage.setItem(KEY, JSON.stringify(state)); localStorage.setItem(KEY+'-seed-xl','1');
-} } catch(e){}
-/* Ejemplos ficticios de la versión pública: se agregan una sola vez, solo si el calendario está vacío */
-try { if (localStorage.getItem(KEY+'-demo')!=='1'){
-  if (!state.items.length){ const d0 = new Date(); d0.setHours(9,0,0,0);
-    const mk = (tid,label,off)=>{ const t = state.types.find(x=>x.id===tid); if (!t) return; const s = new Date(d0); s.setDate(s.getDate()+off);
-      state.items.push({id:uid(), typeId:tid, label, notes:'', fields:{}, sample:true, stages:buildStages(t, fmt(s)).map(({name,at,done})=>({name,at,done}))}); };
-    mk('desc','COL 001',-3); mk('sulf','Muestra A',0); mk('pla','Muestra B',2); }
-  localStorage.setItem(KEY+'-demo','1');
+  localStorage.setItem(KEY, JSON.stringify(state)); localStorage.setItem(KEY+'-seed-xl','2');
 } } catch(e){}
 function migrate(){
   ['desc','carga'].forEach(id=>{
@@ -1068,7 +1441,7 @@ function dayDoc(key){
   const rows = evs.map(e=>`<tr><td class="c">${hm(e.d)}</td><td><span class="sw" style="background:${e.t.color}"></span>${esc(e.t.name)}</td><td><b>${esc(e.it.label)}</b></td>
     <td>${esc(e.s.name)} <span class="m">(${e.i+1}/${e.it.stages.length})</span></td><td class="c">${e.s.done?'☑':'☐'}</td>
     <td>${fieldTxt(e.it).map(esc).join('<br>')}${e.it.notes?`${fieldTxt(e.it).length?'<br>':''}Notas: ${esc(e.it.notes)}`:''}</td></tr>`).join('');
-  const erows = env.map(e=>`<tr><td>${esc(e.cc||'')}</td><td><b>${esc(e.muestra||'')}</b></td><td>${esc(e.tipo||'Ripio')}</td><td class="c">${esc(e.cond||'')}</td><td>${esc(e.analisis||'')}</td><td class="c">☐</td></tr>`).join('');
+  const erows = env.map(e=>`<tr><td>${esc(e.cc||'')}</td><td><b>${esc(e.muestra||'')}</b></td><td>${esc(e.tipo||'Ripio')}</td><td class="c">${esc(e.cond||'')}</td><td>${esc(e.analisis||'')}</td><td class="c">${e.envProc?'☑':'☐'}</td><td class="c">${e.envAna?'☑':'☐'}</td></tr>`).join('');
   return `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Actividades ${fmtD(d)}</title><style>
     @page{size:A4 landscape;margin:12mm}
     body{font:12px Arial,Helvetica,sans-serif;color:#111;margin:0}
@@ -1083,7 +1456,7 @@ function dayDoc(key){
     <h1>Calendario Operacional · ${DN[d.getDay()]} ${fmtD(d)}</h1>
     <p class="sub">${evs.length} etapa${evs.length===1?'':'s'} programada${evs.length===1?'':'s'}${env.length?` · ${env.length} envío${env.length===1?'':'s'} a procesamiento`:''} · impreso el ${fmtD(new Date())} ${hm(new Date())}</p>
     ${evs.length ? `<table><thead><tr><th style="width:55px">Hora</th><th style="width:20%">Actividad</th><th style="width:12%">Muestra / columna</th><th>Etapa</th><th style="width:45px">Hecha</th><th style="width:28%">Datos</th></tr></thead><tbody>${rows}</tbody></table>` : '<p>No hay etapas programadas este día.</p>'}
-    ${env.length ? `<h2>Envío a procesamiento</h2><table><thead><tr><th style="width:50px">CC</th><th>ID muestra</th><th style="width:70px">Tipo</th><th style="width:85px">Condiciones</th><th>Análisis</th><th style="width:60px">Enviado</th></tr></thead><tbody>${erows}</tbody></table>` : ''}
+    ${env.length ? `<h2>Envío a procesamiento</h2><table><thead><tr><th style="width:50px">CC</th><th>ID muestra</th><th style="width:70px">Tipo</th><th style="width:85px">Condiciones</th><th>Análisis</th><th style="width:85px">Enviado a procesamiento</th><th style="width:70px">Enviado a análisis</th></tr></thead><tbody>${erows}</tbody></table>` : ''}
     <div class="firma"><div>Responsable</div><div>Revisado por</div></div>
   </body></html>`;
 }
@@ -1197,14 +1570,16 @@ function renderEnvios(){
   $('main').innerHTML = `<div class="panel">
     <div class="envh"><div><h2>Envío a procesamiento</h2><p class="hint">Cada lavado y descarga de columna agrega aquí su ripio, con la fecha de salida del horno y el análisis de esa columna. Los minerales se agregan con el botón.</p></div>
       <div class="bar"><button class="pri" id="eAdd" type="button">+ Agregar mineral</button><button id="eImp" type="button">Importar planilla Excel</button><input type="file" id="eFile" accept=".xlsx" hidden></div></div>
-    ${list.length ? `<div class="tblw"><table class="env"><thead><tr><th style="width:140px">Fecha envío</th><th style="width:80px">CC</th><th>ID muestra</th><th style="width:100px">Condiciones</th><th style="width:140px">Fecha recepción</th><th style="width:250px">Análisis</th><th style="width:120px">Tipo</th><th style="width:40px"></th></tr></thead><tbody>
-    ${list.map(e=>`<tr data-env="${e.id}" class="${e.fecha>today?'fut':''}">
+    ${list.length ? `<div class="tblw"><table class="env"><thead><tr><th style="width:140px">Fecha envío</th><th style="width:80px">CC</th><th>ID muestra</th><th style="width:100px">Condiciones</th><th style="width:140px">Fecha recepción</th><th style="width:250px">Análisis</th><th style="width:95px;text-align:center">Enviado a procesamiento</th><th style="width:80px;text-align:center">Enviado a análisis</th><th style="width:120px">Tipo</th><th style="width:40px"></th></tr></thead><tbody>
+    ${list.map(e=>`<tr data-env="${e.id}" class="${e.envProc&&e.envAna?'sent':e.fecha>today?'fut':''}" style="--c:${e.tipo==='Mineral'?'#1c5cab':'#b5543c'}">
       <td><input type="date" data-ef="fecha" value="${esc(e.fecha)}" aria-label="Fecha envío"></td>
       <td><select data-ef="cc" aria-label="Centro de costo">${envOpt(ENV_CC,e.cc)}</select></td>
       <td><input type="text" data-ef="muestra" value="${esc(e.muestra)}" aria-label="ID muestra" placeholder="Ej: M-21"></td>
       <td><select data-ef="cond" aria-label="Condiciones enviadas">${envOpt(ENV_SN,e.cond)}</select></td>
       <td><input type="date" data-ef="recep" value="${esc(e.recep)}" aria-label="Fecha recepción"></td>
       <td><select data-ef="analisis" aria-label="Análisis">${envOpt(ENV_AN,e.analisis)}</select></td>
+      <td class="ckc"><button class="ck" type="button" role="checkbox" aria-checked="${e.envProc?'true':'false'}" data-eck="${e.id}|envProc" aria-label="Enviado a procesamiento: ${esc(e.muestra||'')}" title="Enviado a procesamiento">✓</button></td>
+      <td class="ckc"><button class="ck" type="button" role="checkbox" aria-checked="${e.envAna?'true':'false'}" data-eck="${e.id}|envAna" aria-label="Enviado a análisis: ${esc(e.muestra||'')}" title="Enviado a análisis">✓</button></td>
       <td><span class="tipo${e.tipo==='Mineral'?' min':''}">${esc(e.tipo||'Ripio')}</span>${e.fecha>today?' <span class="hint">en horno</span>':''}</td>
       <td><button class="x" type="button" data-edel="${e.id}" aria-label="Quitar de la lista">×</button></td></tr>`).join('')}
     </tbody></table></div>` : '<p class="empty">Todavía no hay envíos. Al programar un lavado y descarga de columna aparece aquí su ripio; los minerales se agregan con «+ Agregar mineral».</p>'}
@@ -1291,8 +1666,8 @@ function buildWorkbook(X){
     const sc=dt(by(i,/sacar|pesaje/i)); add(sc,'sacar',i.label); if (!(i.fields&&i.fields.ripio)) add(sc,'pend',i.label); });
   const res = Object.values(days).sort((a,b)=>a.d-b.d).map(x=>[x.d, DIA(x.d), x.carga.join(', '), x.riego.join(', '), x.lavado.join(', '), x.drenaje.join(', '), x.descarga.join(', '), x.horno.join(', '), x.sacar.join(', '), x.pend.join(', ')]);
   X.utils.book_append_sheet(wb, makeSheet(X, ['FECHA','DÍA','CARGA COLUMNAS','INICIO RIEGO','INICIO LAVADO','INICIO DRENAJE','DESCARGA Y MUESTREO','INGRESO HORNO','SACAR DEL HORNO / PESAJE','RIPIO PENDIENTE DE ENVÍO'], res, [13,11,22,24,18,18,18,18,22,22], true, 0), 'RESUMEN POR DÍA');
-  const env = state.envios.filter(e=>!e.del).slice().sort((a,b)=>(a.fecha||'').localeCompare(b.fecha||'')).map(e=>[e.fecha?parse(e.fecha):'', e.cc||'', numOr(e.muestra), e.cond||'', e.recep?parse(e.recep):'-', e.analisis||'', e.tipo||'Ripio']);
-  X.utils.book_append_sheet(wb, makeSheet(X, ['Fecha envío','CC','ID Muestra','Condiciones','Fecha Recepción','Analisis','Tipo'], env, [13,8,22,12,15,42,10], true, 0), 'ENVIO A PROCESAMIENTO');
+  const env = state.envios.filter(e=>!e.del).slice().sort((a,b)=>(a.fecha||'').localeCompare(b.fecha||'')).map(e=>[e.fecha?parse(e.fecha):'', e.cc||'', numOr(e.muestra), e.cond||'', e.recep?parse(e.recep):'-', e.analisis||'', e.envProc?'Sí':'No', e.envAna?'Sí':'No', e.tipo||'Ripio']);
+  X.utils.book_append_sheet(wb, makeSheet(X, ['Fecha envío','CC','ID Muestra','Condiciones','Fecha Recepción','Analisis','Enviado a procesamiento','Enviado a análisis','Tipo'], env, [13,8,22,12,15,42,14,12,10], true, 0), 'ENVIO A PROCESAMIENTO');
   const ev = []; state.items.forEach(it=>{ const t=typeOf(it.typeId); it.stages.forEach((s,i)=>{ const d=parse(s.at); ev.push([t.name, numOr(it.label), `${i+1}/${it.stages.length}`, s.name, d, ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'][d.getDay()], s.done?'Hecha':'Pendiente', outOfRange(s)?'Sí':'', fieldTxt(it).join(' · '), it.notes||'']); }); });
   ev.sort((a,b)=>a[4]-b[4]);
   X.utils.book_append_sheet(wb, makeSheet(X, ['Tipo de actividad','Muestra / columna','N° etapa','Etapa','Fecha','Día','Estado','Fuera de rango (fin de semana)','Datos','Notas'], ev, [34,18,9,40,17,11,11,16,40,30]), 'TODAS LAS ACTIVIDADES');
@@ -1362,6 +1737,12 @@ function backupModal(){
 /* ---------- Eventos globales ---------- */
 document.addEventListener('click', e=>{
   const pr = e.target.closest('[data-print]'); if (pr){ printDay(pr.dataset.print); return; }
+  const eck = e.target.closest('[data-eck]');
+  if (eck){
+    const [id,f] = eck.dataset.eck.split('|'), en = state.envios.find(x=>x.id===id); if (!en) return;
+    en[f] = !en[f]; render();
+    toast(`${en.muestra||'Envío'}: ${en[f]?'enviado':'no enviado'} a ${f==='envProc'?'procesamiento':'análisis'}${en[f]?' ✓':''}`); return;
+  }
   const del = e.target.closest('[data-edel]');
   if (del){
     if (!del.classList.contains('arm')){ del.classList.add('arm'); del.textContent='¿Quitar?'; return; }
