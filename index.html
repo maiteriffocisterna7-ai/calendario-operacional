@@ -94,6 +94,20 @@ aside{display:flex;flex-direction:column;gap:12px;min-width:0}
 .alert b{color:var(--bad)}
 .alert button{all:unset;cursor:pointer;text-decoration:underline;color:var(--fg)}
 .chip.dragging{opacity:.3}
+/* Iniciales del operador */
+.opb{display:inline-block;font-family:var(--f-mono);font-size:10px;font-weight:600;line-height:1.35;padding:0 4px;border-radius:3px;background:var(--fg);color:var(--surface);letter-spacing:.03em;vertical-align:1px}
+.chip.done .opb{background:var(--muted)}
+/* Selector de varios operadores */
+.opk{position:relative;min-width:0}
+.opk>summary{list-style:none;cursor:pointer;font-size:13px;border:1px solid var(--line);border-radius:6px;padding:5px 24px 5px 7px;background:var(--bg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:relative}
+.opk>summary::-webkit-details-marker{display:none}
+.opk>summary::after{content:'▾';position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:11px}
+.opk>summary .ph{color:var(--muted)}
+.opk[open]>summary{border-color:var(--accent)}
+.opk .opm{position:absolute;z-index:30;top:calc(100% + 3px);left:0;min-width:max(100%,150px);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 8px;display:flex;flex-direction:column;gap:4px;box-shadow:0 6px 18px rgba(0,0,0,.14)}
+.opk .opm label{display:flex;align-items:center;gap:7px;font-size:13px;white-space:nowrap;cursor:pointer}
+.opk .opm input{width:auto;flex:none;margin:0;padding:0}
+.opk .opm .hint{font-size:11px;margin:2px 0 0}
 input[data-done],input[data-sdone],#iAllDone{accent-color:var(--done)}
 .more{all:unset;cursor:pointer;font-size:11px;color:var(--fg2);padding:0 5px}
 .more:hover{color:var(--fg);text-decoration:underline}
@@ -145,13 +159,13 @@ input[data-done],input[data-sdone],#iAllDone{accent-color:var(--done)}
 .row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
 @media (max-width:520px){.row2{grid-template-columns:minmax(0,1fr)}}
 .stages{display:flex;flex-direction:column;gap:6px}
-.st{display:grid;grid-template-columns:22px minmax(0,1fr) auto auto;gap:8px;align-items:center;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+.st{display:grid;grid-template-columns:22px minmax(0,1fr) 78px auto auto;gap:8px;align-items:center;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
 .st .i{font-family:var(--f-mono);font-size:11px;color:var(--muted);text-align:center}
 .st .nm{font-size:13px;min-width:0}
 .st .nm input{width:100%}
 .st .gap{font-family:var(--f-mono);font-size:11px;color:var(--muted)}
 .st input[type=datetime-local]{font-family:var(--f-mono);font-size:12px}
-@media (max-width:560px){.st{grid-template-columns:22px minmax(0,1fr) auto}.st .dt{grid-column:2/-1}}
+@media (max-width:560px){.st{grid-template-columns:22px minmax(0,1fr) auto}.st .dt,.st .sop{grid-column:2/-1}}
 .pv{display:flex;flex-direction:column;gap:4px;font-size:13px}
 .pvr{display:grid;grid-template-columns:18px 150px minmax(0,1fr);gap:8px;align-items:center;padding:4px 6px;border-radius:6px;cursor:pointer}
 .pvr:hover{background:var(--bg)}
@@ -193,6 +207,32 @@ table.env td.ckc .ck{margin:0 auto;width:20px;height:20px;font-size:14px}
 .tipo{display:inline-block;font-size:11px;font-weight:600;border-radius:999px;padding:1px 8px;background:color-mix(in srgb,#b5543c 20%,var(--surface));white-space:nowrap}
 .tipo.min{background:color-mix(in srgb,var(--accent) 18%,var(--surface))}
 button.x.arm{color:var(--bad);font-size:12px;font-weight:600}
+/* Estado de pago */
+.seg{flex-wrap:wrap}
+.epks{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
+.epk{display:flex;flex-direction:column;gap:4px;text-align:left;border:1px solid var(--line);border-top:4px solid var(--c);border-radius:8px;background:var(--bg);padding:8px 10px;min-width:0}
+.epk.on{background:var(--surface);border-color:var(--c);box-shadow:0 0 0 1px var(--c)}
+.epk-h{display:flex;gap:6px;align-items:baseline;min-width:0}.epk-h b{font-family:var(--f-display);font-size:15px}.epk-h span{font-size:11px;color:var(--fg2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.epk-v{font-family:var(--f-mono);font-size:15px;font-weight:600}
+.epk-g{display:grid;grid-template-columns:1fr 1fr;gap:0 8px;font-size:11px;color:var(--fg2)}.epk-g b{color:var(--fg);font-family:var(--f-mono)}
+.eps{border:1px solid var(--line);border-radius:8px;background:var(--surface);display:flex;flex-direction:column;gap:12px;padding:14px;min-width:0}
+.eps-head{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-between;align-items:flex-start;padding-bottom:10px;border-bottom:2px solid var(--fg)}
+.eps-head h3{font-family:var(--f-display);font-size:18px;margin:2px 0}
+.eps-tot{display:flex;flex-direction:column;align-items:flex-end;gap:2px}.eps-tot b{font-family:var(--f-mono);font-size:24px}
+.eps-sec{display:flex;flex-direction:column;gap:4px}
+.eps-sh{display:flex;justify-content:space-between;gap:10px;padding:5px 8px;background:var(--bg);border-radius:4px;font-size:13px}.eps-sh span{font-family:var(--f-mono)}
+table.ept{border-collapse:collapse;width:100%;min-width:900px;font-size:12px;font-variant-numeric:tabular-nums}
+table.ept th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;padding:5px 6px;border-bottom:1px solid var(--line);white-space:nowrap}
+table.ept td{padding:4px 6px;border-bottom:1px solid var(--line);vertical-align:middle}
+table.ept .r{text-align:right;font-family:var(--f-mono);white-space:nowrap}
+table.ept tr.z td{color:var(--muted)}
+table.ept tr.cal td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
+table.ept input[type=number]{width:72px;text-align:right;font-family:var(--f-mono)}
+table.ept input[type=text]{width:100%;min-width:160px}
+.tagc{font-size:10px;font-weight:600;color:var(--accent);border:1px solid currentColor;border-radius:999px;padding:0 6px;white-space:nowrap}
+.epcc{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:6px;margin-top:6px}
+.epcc label{display:flex;gap:8px;align-items:center;justify-content:space-between;font-size:13px;color:var(--fg)}
+.dg .w{font-family:var(--f-mono);font-size:12px;color:var(--fg2)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
@@ -228,6 +268,7 @@ button.x.arm{color:var(--bad);font-size:12px;font-weight:600}
       <button type="button" id="vAgenda" aria-pressed="false">Agenda</button>
       <button type="button" id="vDone" aria-pressed="false">Completadas</button>
       <button type="button" id="vEnv" aria-pressed="false">Envíos</button>
+      <button type="button" id="vEp" aria-pressed="false">Estado de pago</button>
     </div>
   </div>
 
@@ -237,6 +278,7 @@ button.x.arm{color:var(--bad);font-size:12px;font-weight:600}
       <div class="panel">
         <div class="fld"><label class="lbl" for="q">Buscar muestra o columna</label><input id="q" type="search" placeholder="Ej: COL 281"></div>
         <label class="chk"><input type="checkbox" id="follow" checked> Al mover una etapa, mover también las siguientes</label>
+        <div class="fld"><label class="lbl" for="fOp">Operador</label><select id="fOp"><option value="">Todos los operadores</option><option value="SR">SR</option><option value="DV">DV</option><option value="JM">JM</option><option value="FG">FG</option><option value="-">Sin asignar</option></select></div>
         <div class="fld"><label class="lbl" for="pDay">Imprimir un día</label><div style="display:flex;gap:6px"><input id="pDay" type="date" style="flex:1"><button type="button" id="pBtn">🖨 Imprimir</button></div></div>
       </div>
       <div class="panel">
@@ -256,6 +298,7 @@ button.x.arm{color:var(--bad);font-size:12px;font-weight:600}
 <div class="toast" id="toast" hidden></div>
 
 <script src="https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script>
 (function(){
 const $ = id => document.getElementById(id);
@@ -1173,23 +1216,47 @@ function render(){
   $('vAgenda').setAttribute('aria-pressed', ui.view==='agenda');
   $('vDone').setAttribute('aria-pressed', ui.view==='done');
   $('vEnv').setAttribute('aria-pressed', ui.view==='envios');
+  $('vEp').setAttribute('aria-pressed', ui.view==='ep');
   $('vDone').textContent = `Completadas (${state.items.filter(isDone).length})`;
   $('vEnv').textContent = `Envíos (${state.envios.filter(e=>!e.del).length})`;
   $('sampleBanner').hidden = !state.items.some(i=>i.sample);
-  if (ui.view==='month') renderMonth(); else if (ui.view==='agenda') renderAgenda(); else if (ui.view==='envios') renderEnvios(); else renderDone();
+  if (ui.view==='month') renderMonth(); else if (ui.view==='agenda') renderAgenda(); else if (ui.view==='envios') renderEnvios(); else if (ui.view==='ep') renderEP(); else renderDone();
   if (ui.view==='month' || ui.view==='agenda'){
     const bad = stageEvents().filter(e=>!e.s.done && outOfRange(e.s) && e.d.getFullYear()===ui.y && e.d.getMonth()===ui.m);
     if (bad.length) $('main').insertAdjacentHTML('afterbegin', `<div class="alert"><b>⚠ ${bad.length} etapa${bad.length>1?'s':''} fuera de rango este mes (cae${bad.length>1?'n':''} fin de semana)</b>
-      ${bad.map(e=>`<span>${short(e.d)} · <button type="button" data-open="${e.it.id}">${esc(e.s.name)} · ${esc(e.t.name)} ${esc(e.it.label)}</button></span>`).join('')}</div>`);
+      ${bad.map(e=>`<span>${short(e.d)} · <button type="button" data-open="${e.it.id}">${esc(e.s.name)} · ${esc(e.tn)} ${esc(e.it.label)}</button></span>`).join('')}</div>`);
   }
   renderSide();
 }
 
+/* Lavado y descarga de columna: se muestra «Lavado» al inicio y «Descarga» desde el día 8 (descarga, horno y pesaje) */
+const phaseName = (t, s) => t.id==='desc' ? (/descarga|horno|secad|pesaje/i.test(s.name) ? 'Descarga de columna' : 'Lavado de columna') : t.name;
+/* Operadores: cada actividad tiene un responsable y cada etapa puede tener otro */
+const OPS = ['SR','DV','JM','FG'];
+const opOf = (it, s) => (s && s.op) || it.op || '';
+/* Una actividad o etapa puede tener varios operadores: se guardan como «SR, DV» */
+const opList = v => String(v||'').split(/\s*[,+\/]\s*/).filter(Boolean);
+const opMatch = op => !ui.op || (ui.op==='-' ? !op : opList(op).includes(ui.op));
+const opOpts = (v, blank) => `<option value="">${esc(blank)}</option>` + OPS.concat(v && !OPS.includes(v) ? [v] : []).map(o=>`<option value="${esc(o)}" ${o===v?'selected':''}>${esc(o)}</option>`).join('');
+const opSumHtml = (cur, blank) => cur.length ? esc(cur.join(', ')) : `<span class="ph">${esc(blank)}</span>`;
+function opPick(id, v, blank, attr=''){
+  const cur = opList(v), all = OPS.concat(cur.filter(o=>!OPS.includes(o)));
+  return `<details class="opk" id="${id}" data-blank="${esc(blank)}" ${attr}><summary aria-label="Operadores">${opSumHtml(cur, blank)}</summary><div class="opm">${
+    all.map(o=>`<label><input type="checkbox" value="${esc(o)}" ${cur.includes(o)?'checked':''}> ${esc(o)}</label>`).join('')
+  }<p class="hint">Puedes marcar más de uno</p></div></details>`;
+}
+/* Lee los operadores marcados y actualiza el texto del selector */
+function opRead(el){
+  const v = [...el.querySelectorAll('input:checked')].map(x=>x.value);
+  el.querySelector('summary').innerHTML = opSumHtml(v, el.dataset.blank||'');
+  return v.join(', ');
+}
+document.addEventListener('click', e=>{ document.querySelectorAll('details.opk[open]').forEach(d=>{ if (!d.contains(e.target)) d.open = false; }); });
 function stageEvents(){
   const ev = [];
   state.items.filter(visible).forEach(it=>{
     const t = typeOf(it.typeId);
-    it.stages.forEach((s,i)=>ev.push({it, t, s, i, d:parse(s.at)}));
+    it.stages.forEach((s,i)=>{ const op = opOf(it,s); if (opMatch(op)) ev.push({it, t, s, i, d:parse(s.at), op, tn:phaseName(t,s)}); });
   });
   return ev.sort((a,b)=>a.d-b.d);
 }
@@ -1225,9 +1292,9 @@ function renderMonth(){
 function chip(e){
   const out = !e.s.done && outOfRange(e.s);
   return `<div class="chip${e.s.done?' done':''}${out?' out':''}" draggable="true" data-item="${e.it.id}" data-stage="${e.i}" style="--c:${e.t.color}"
-    title="${esc(e.t.name)} · ${esc(e.it.label)}&#10;${esc(e.s.name)} (${e.i+1}/${e.it.stages.length})&#10;${short(e.d)}${e.s.done?'&#10;✓ Hecha':''}${out?'&#10;⚠ Fuera de rango: cae fin de semana':''}">
+    title="${esc(e.tn)} · ${esc(e.it.label)}${e.op?' · Operador: '+esc(e.op):''}&#10;${esc(e.s.name)} (${e.i+1}/${e.it.stages.length})&#10;${short(e.d)}${e.s.done?'&#10;✓ Hecha':''}${out?'&#10;⚠ Fuera de rango: cae fin de semana':''}">
     <button class="ck" type="button" role="checkbox" aria-checked="${e.s.done?'true':'false'}" data-ck="${e.it.id}|${e.i}" aria-label="${e.s.done?'Desmarcar':'Marcar como hecha'}: ${esc(e.s.name)}">✓</button>
-    <span class="cb" role="button" tabindex="0"><span class="n"><b>${out?'⚠ ':''}<span class="t">${hm(e.d)}</span> ${esc(e.t.name)}</b><i>${e.it.fields&&e.it.fields.ripio?'✓ ':''}${esc(e.s.name)}${e.it.label && e.it.label!==e.t.name ? ' · '+esc(e.it.label) : ''}</i></span></span></div>`;
+    <span class="cb" role="button" tabindex="0"><span class="n"><b>${out?'⚠ ':''}${e.op?`<span class="opb">${esc(e.op)}</span> `:''}<span class="t">${hm(e.d)}</span> ${esc(e.tn)}</b><i>${e.it.fields&&e.it.fields.ripio?'✓ ':''}${esc(e.s.name)}${e.it.label && e.it.label!==e.t.name ? ' · '+esc(e.it.label) : ''}</i></span></span></div>`;
 }
 
 function renderAgenda(){
@@ -1240,7 +1307,7 @@ function renderAgenda(){
       ${list.map(e=>`<div class="agrow${e.s.done?' done':''}" style="--c:${e.t.color}" data-open="${e.it.id}">
         <input type="checkbox" id="ag-${e.it.id}-${e.i}" data-done="${e.it.id}|${e.i}" ${e.s.done?'checked':''} aria-label="Marcar etapa como hecha">
         <span class="tm">${hm(e.d)}</span>
-        <div class="tx"><b>${esc(e.s.name)}</b> ${!e.s.done&&outOfRange(e.s)?tagOut(e.d):''}<div>${esc(e.t.name)} · ${esc(e.it.label)}${e.it.sample?' · Ejemplo':''}</div></div>
+        <div class="tx"><b>${esc(e.s.name)}</b> ${!e.s.done&&outOfRange(e.s)?tagOut(e.d):''}<div>${e.op?`<span class="opb">${esc(e.op)}</span> `:''}${esc(e.tn)} · ${esc(e.it.label)}${e.it.sample?' · Ejemplo':''}</div></div>
         <span class="stp">${e.i+1}/${e.it.stages.length}</span></div>`).join('')}
     </section>`;
   }).join('') + '</div>';
@@ -1327,6 +1394,7 @@ function newModal(preDay){
       <div class="fld"><label class="lbl" for="nStart" id="nStartLbl">Fecha y hora de la primera etapa</label><input id="nStart" type="datetime-local" value="${def}"></div>
       <div class="fld"><label class="lbl" for="nNotes">Notas</label><input id="nNotes" type="text" placeholder="Opcional"></div>
     </div>
+    <div class="row2"><div class="fld"><span class="lbl">Operadores responsables</span>${opPick('nOp', ui.op && ui.op!=='-' ? ui.op : '', 'Sin asignar')}</div></div>
     <div id="nFields"></div>
     <div class="fld"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap"><span class="lbl">Etapas a agregar</span>
       <span class="bar"><button type="button" id="nAll">Todas</button><button type="button" id="nNone">Ninguna</button></span></div>
@@ -1360,6 +1428,7 @@ function newModal(preDay){
     const fields = {}; $('nFields').querySelectorAll('[data-f]').forEach(x=>{ const v = x.type==='checkbox' ? (x.checked?'Sí':'') : x.value; if (v) fields[x.dataset.f]=v; });
     const stages = selStages(t, st, sel).map(({name,at,done})=>({name,at,done}));
     const it = {id:uid(), typeId:t.id, label:$('nLabel').value.trim()||t.name, notes:$('nNotes').value.trim(), fields, stages};
+    const nop = opRead($('nOp')); if (nop) it.op = nop;
     state.items.push(it);
     const d = parse(st); ui.y=d.getFullYear(); ui.m=d.getMonth();
     closeModal(); toast(`${t.name} programada: ${stages.length===1?stages[0].name:stages.length+' etapas'}`);
@@ -1376,6 +1445,8 @@ function itemModal(id){
       <div class="fld"><label class="lbl" for="iLabel">Muestra / columna / OT</label><input id="iLabel" type="text" value="${esc(it.label)}"></div>
       <div class="fld"><label class="lbl" for="iNotes">Notas</label><input id="iNotes" type="text" value="${esc(it.notes)}"></div>
     </div>
+    <div class="row2"><div class="fld"><span class="lbl">Operadores responsables</span>${opPick('iOp', it.op||'', 'Sin asignar')}</div>
+      <p class="hint" style="align-self:end">Puedes marcar más de un operador. Cada etapa puede tener otros; si no, quedan los responsables.</p></div>
     <div id="iFields">${fieldsHtml(t, it.fields, 'if-')}</div>
     <div class="fld"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px"><span class="lbl">Etapas</span>
       <span class="bar"><button type="button" id="iAddSt">+ Etapa</button><span class="hint">Mover todo</span><button type="button" data-all="-1">−1 día</button><button type="button" data-all="1">+1 día</button></span></div>
@@ -1389,6 +1460,7 @@ function itemModal(id){
     $('iStages').innerHTML = it.stages.map((s,i)=>{ const d=parse(s.at); return `<div class="st">
       <input type="checkbox" id="sd${i}" data-sdone="${i}" ${s.done?'checked':''} aria-label="Etapa hecha">
       <div class="nm"><input type="text" id="sn${i}" data-sname="${i}" value="${esc(s.name)}" aria-label="Nombre de la etapa">${outOfRange(s)?' '+tagOut(d):''}</div>
+      ${opPick('so'+i, s.op||'', it.op ? it.op+' (resp.)' : 'Sin asignar', `data-sop="${i}"`).replace('class="opk"', 'class="opk sop"')}
       <input class="dt" type="datetime-local" id="sa${i}" data-sat="${i}" value="${s.at}" aria-label="Fecha de la etapa">
       ${it.stages.length>1?`<button class="x" type="button" data-srm="${i}" aria-label="Quitar etapa">×</button>`:'<span></span>'}</div>`; }).join('');
   };
@@ -1396,6 +1468,7 @@ function itemModal(id){
   const touch = ()=>{ if (it.sample) delete it.sample; save(); };
   $('iLabel').oninput = e=>{ it.label=e.target.value; touch(); };
   $('iNotes').oninput = e=>{ it.notes=e.target.value; touch(); };
+  $('iOp').addEventListener('change', ()=>{ const v = opRead($('iOp')); if (v) it.op = v; else delete it.op; touch(); drawSt(); toast(it.op ? `Responsables: ${it.op}` : 'Sin operador asignado'); });
   $('iFields').addEventListener('input', e=>{ const x=e.target; if (x.dataset.f){ (it.fields ||= {})[x.dataset.f] = x.type==='checkbox' ? (x.checked?'Sí':'') : x.value; touch(); if (x.type==='checkbox') toast(x.checked?'Ripio marcado como enviado a procesamiento':'Ripio marcado como no enviado'); } });
   $('iAllDone').onchange = e=>{ it.stages.forEach(s=>s.done=e.target.checked); syncDone(it); touch(); drawSt(); if (e.target.checked) toast('Actividad completada'); };
   $('iAddSt').onclick = ()=>{
@@ -1410,6 +1483,8 @@ function itemModal(id){
     const x = e.target;
     if (x.dataset.sdone!==undefined){ it.stages[+x.dataset.sdone].done = x.checked; syncDone(it); touch(); $('iAllDone').checked = isDone(it); }
     if (x.dataset.sname!==undefined){ it.stages[+x.dataset.sname].name = x.value; touch(); }
+    const sp = x.closest('[data-sop]');
+    if (sp){ const s = it.stages[+sp.dataset.sop], v = opRead(sp); if (v) s.op = v; else delete s.op; touch(); return; }
     if (x.dataset.sat!==undefined && x.value){ const i=+x.dataset.sat; const mins=Math.round((parse(x.value)-parse(it.stages[i].at))/6e4); shiftStage(it,i,mins,$('iFollow').checked); touch(); drawSt(); }
   });
   $('modal').querySelectorAll('[data-all]').forEach(b=>b.onclick=()=>{ shiftStage(it,0,(+b.dataset.all)*1440,true); touch(); drawSt(); });
@@ -1426,7 +1501,7 @@ function dayModal(key){
   const evs = stageEvents().filter(e=>dkey(e.d)===key);
   openModal(`${head(`${['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'][d.getDay()]} ${d.getDate()} de ${MONL[d.getMonth()]}`, evs.length?`${evs.length} etapas`:'Sin etapas este día')}
     <div class="agenda">${evs.map(e=>`<div class="agrow${e.s.done?' done':''}" style="--c:${e.t.color}" data-open="${e.it.id}">
-      <span></span><span class="tm">${hm(e.d)}</span><div class="tx"><b>${esc(e.s.name)}</b><div>${esc(e.t.name)} · ${esc(e.it.label)}</div></div><span class="stp">${e.i+1}/${e.it.stages.length}</span></div>`).join('')}</div>
+      <span></span><span class="tm">${hm(e.d)}</span><div class="tx"><b>${esc(e.s.name)}</b><div>${e.op?`<span class="opb">${esc(e.op)}</span> `:''}${esc(e.tn)} · ${esc(e.it.label)}</div></div><span class="stp">${e.i+1}/${e.it.stages.length}</span></div>`).join('')}</div>
     <div class="mf"><button type="button" data-print="${key}">🖨 Imprimir día</button><div class="bar"><button type="button" data-close>Cerrar</button><button class="pri" type="button" id="dNew">+ Programar este día</button></div></div>`);
   $('dNew').onclick = ()=>newModal(key);
 }
@@ -1435,10 +1510,10 @@ function dayModal(key){
 function dayDoc(key){
   const d = parse(key), DN = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
   const evs = [];
-  state.items.forEach(it=>{ const t = typeOf(it.typeId); it.stages.forEach((s,i)=>{ const x = parse(s.at); if (dkey(x)===key) evs.push({it,t,s,i,d:x}); }); });
+  state.items.forEach(it=>{ const t = typeOf(it.typeId); it.stages.forEach((s,i)=>{ const x = parse(s.at), op = opOf(it,s); if (dkey(x)===key && opMatch(op)) evs.push({it,t,s,i,d:x,op,tn:phaseName(t,s)}); }); });
   evs.sort((a,b)=>a.d-b.d);
   const env = (state.envios||[]).filter(e=>!e.del && e.fecha===key);
-  const rows = evs.map(e=>`<tr><td class="c">${hm(e.d)}</td><td><span class="sw" style="background:${e.t.color}"></span>${esc(e.t.name)}</td><td><b>${esc(e.it.label)}</b></td>
+  const rows = evs.map(e=>`<tr><td class="c">${hm(e.d)}</td><td class="c"><b>${esc(e.op)}</b></td><td><span class="sw" style="background:${e.t.color}"></span>${esc(e.tn)}</td><td><b>${esc(e.it.label)}</b></td>
     <td>${esc(e.s.name)} <span class="m">(${e.i+1}/${e.it.stages.length})</span></td><td class="c">${e.s.done?'☑':'☐'}</td>
     <td>${fieldTxt(e.it).map(esc).join('<br>')}${e.it.notes?`${fieldTxt(e.it).length?'<br>':''}Notas: ${esc(e.it.notes)}`:''}</td></tr>`).join('');
   const erows = env.map(e=>`<tr><td>${esc(e.cc||'')}</td><td><b>${esc(e.muestra||'')}</b></td><td>${esc(e.tipo||'Ripio')}</td><td class="c">${esc(e.cond||'')}</td><td>${esc(e.analisis||'')}</td><td class="c">${e.envProc?'☑':'☐'}</td><td class="c">${e.envAna?'☑':'☐'}</td></tr>`).join('');
@@ -1453,9 +1528,9 @@ function dayDoc(key){
     .sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
     .firma{margin-top:28px;display:flex;gap:60px} .firma div{border-top:1px solid #333;padding-top:4px;min-width:220px}
   </style></head><body>
-    <h1>Calendario Operacional · ${DN[d.getDay()]} ${fmtD(d)}</h1>
+    <h1>Calendario Operacional · ${DN[d.getDay()]} ${fmtD(d)}${ui.op?` · Operador: ${ui.op==='-'?'sin asignar':esc(ui.op)}`:''}</h1>
     <p class="sub">${evs.length} etapa${evs.length===1?'':'s'} programada${evs.length===1?'':'s'}${env.length?` · ${env.length} envío${env.length===1?'':'s'} a procesamiento`:''} · impreso el ${fmtD(new Date())} ${hm(new Date())}</p>
-    ${evs.length ? `<table><thead><tr><th style="width:55px">Hora</th><th style="width:20%">Actividad</th><th style="width:12%">Muestra / columna</th><th>Etapa</th><th style="width:45px">Hecha</th><th style="width:28%">Datos</th></tr></thead><tbody>${rows}</tbody></table>` : '<p>No hay etapas programadas este día.</p>'}
+    ${evs.length ? `<table><thead><tr><th style="width:55px">Hora</th><th style="width:60px">Operador</th><th style="width:18%">Actividad</th><th style="width:12%">Muestra / columna</th><th>Etapa</th><th style="width:45px">Hecha</th><th style="width:28%">Datos</th></tr></thead><tbody>${rows}</tbody></table>` : '<p>No hay etapas programadas este día.</p>'}
     ${env.length ? `<h2>Envío a procesamiento</h2><table><thead><tr><th style="width:50px">CC</th><th>ID muestra</th><th style="width:70px">Tipo</th><th style="width:85px">Condiciones</th><th>Análisis</th><th style="width:85px">Enviado a procesamiento</th><th style="width:70px">Enviado a análisis</th></tr></thead><tbody>${erows}</tbody></table>` : ''}
     <div class="firma"><div>Responsable</div><div>Revisado por</div></div>
   </body></html>`;
@@ -1619,6 +1694,351 @@ function xlDate(v){
   return m ? `${m[3]}-${pad(m[2])}-${pad(m[1])}` : '';
 }
 
+/* ---------- Estado de pago (EDP) ---------- */
+/* MS = Pipeline Growth (PW) · MS-A = Caserones (Esmeralda) · MS-B = Lomas Bayas (Maqui) */
+const CC_LIST = ['MS','MS-A','MS-B','RD','IF','SG'];
+const CC_NAME = {'MS':'Pipeline Growth (PW)','MS-A':'Caserones (Esmeralda)','MS-B':'Lomas Bayas (Maqui)','RD':'R&D Testing','IF':'Industrial Feasibility','SG':'SG','':'Sin centro de costo'};
+const CC_COLOR = {'MS':'#1f6f8b','MS-A':'#b5543c','MS-B':'#1baf7a','RD':'#6250d6','IF':'#c98a00','SG':'#e87ba4','':'#898781'};
+function normCC(v){
+  const s = String(v||'').trim().toUpperCase().replace(/\s+/g,'');
+  if (!s) return '';
+  if (CC_LIST.includes(s)) return s;
+  if (/^MS-?(PW|PG)/.test(s)) return 'MS';
+  if (/^MS-?(CAS|ESM)/.test(s)) return 'MS-A';
+  if (/^MS-?(LB|LOM|MAQ)/.test(s)) return 'MS-B';
+  if (s==='IP') return 'RD';
+  return '';
+}
+const ccOf = it => normCC(it.cc) || normCC(it.fields && it.fields.area);
+const capi = s => String(s).charAt(0).toUpperCase()+String(s).slice(1);
+const fold = s => String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/\s+/g,' ').trim();
+const mesTxt = (y,m) => `${capi(MONL[m])} ${y}`;
+const MONS = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+const clp = n => '$ ' + Math.round(n).toLocaleString('es-CL');
+
+/* Columnas: se cobran desde «Carga de columna» hasta «Descarga de columna y muestreo», contando ambos días.
+   «COL 310-312» son dos columnas: la 310 y la 312. */
+const colNums = it => (String(it.label||'').match(/\d{1,4}/g)||[]).map(Number);
+const startStage = it => it.typeId==='carga' ? (it.stages.find(s=>/^carga de columna/i.test(s.name)) || it.stages.find(s=>/^carga/i.test(s.name))) : null;
+const endStage = it => it.typeId==='desc' ? it.stages.find(s=>/^descarga/i.test(s.name)) : null;
+const day0 = d => new Date(d.getFullYear(), d.getMonth(), d.getDate());
+const TESTS = [
+  {k:'acid', ids:['acid'], re:/consumo de acido/, name:'Consumo de ácido'},
+  {k:'pla', ids:['pla'], re:/lixi\w*bilidad|lixiviacion agitada/, name:'PLA (lixiviabilidad agitada)'},
+  {k:'hum', ids:['hum'], re:/humedad/, name:'Humedad mineral'},
+  {k:'dap', ids:['dap'], re:/densidad aparente/, name:'Densidad aparente'},
+  {k:'dreal', ids:['dreal'], re:/densidad real/, name:'Densidad real'},
+  {k:'sulf', ids:['sulf'], re:/sulfatac/, name:'Sulfatación'},
+  {k:'ch', ids:['chag','chsa'], re:/conductividad hidraulica/, name:'Conductividad hidráulica'},
+  {k:'sx', ids:['sx'], re:/extraccion por solvente|\bsx\b/, name:'Extracción por solventes (SX)'},
+];
+const epItems = () => state.items.filter(it=>!it.sample && it.stages && it.stages.length);
+function columnEvents(){
+  const ev = [];
+  epItems().forEach(it=>{ const cc = ccOf(it);
+    [[startStage(it),'Inicio'],[endStage(it),'Descarga']].forEach(([s,kind])=>{ if (!s) return;
+      colNums(it).forEach(n=>ev.push({d:day0(parse(s.at)), kind, n, cc, it, done:!!s.done, first:day0(parse(it.stages[0].at))})); });
+  });
+  return ev.sort((a,b)=>a.d-b.d || a.n-b.n);
+}
+function columnLog(){
+  const cols = {};
+  columnEvents().forEach(e=>{ const c = cols[e.n] ||= {n:e.n, cc:'', start:null, end:null, first:null};
+    if (e.cc && (!c.cc || e.kind==='Inicio')) c.cc = e.cc;
+    if (!c.first || e.first<c.first) c.first = e.first;
+    if (e.kind==='Inicio'){ if (!c.start || e.d>c.start) c.start = e.d; } else if (!c.end || e.d>c.end) c.end = e.d; });
+  return Object.values(cols).sort((a,b)=>a.n-b.n);
+}
+function colDays(c, y, m){
+  const a = new Date(y,m,1), b = new Date(y,m+1,0);
+  // Sin carga registrada: se cuenta desde el día 1 del mes en que empieza su lavado
+  let s = c.start || (c.first ? new Date(c.first.getFullYear(), c.first.getMonth(), 1) : null), e = c.end;
+  if (s && e && e < s) e = null;            // la descarga es de un ciclo anterior: la columna volvió a cargarse
+  if (!s && !e) return 0;
+  if ((s && s > b) || (e && e < a)) return 0;
+  const from = s && s > a ? s : a, to = e && e < b ? e : b;
+  return Math.round((to-from)/864e5) + 1;
+}
+function edpMonth(y, m){
+  const nd = new Date(y,m+1,0).getDate(), inM = d => d && d.getFullYear()===y && d.getMonth()===m;
+  const fin = new Date(y,m+1,0), R = {};
+  CC_LIST.concat('').forEach(cc=>{ R[cc] = {full:[], part:[], days:0, ini:[], des:[], tests:{}, noStart:[], items:[], yearCols:new Set()}; TESTS.forEach(t=>R[cc].tests[t.k]=[]); });
+  columnLog().forEach(c=>{ const r = R[c.cc] || R[''], dd = colDays(c,y,m);
+    if (dd>=nd) r.full.push(c.n); else if (dd>0) r.part.push({n:c.n, d:dd});
+    if (dd>0 && !c.start) r.noStart.push(c.n); });
+  columnEvents().forEach(e=>{ const r = R[e.cc] || R[''];
+    if (e.kind==='Inicio' && e.d.getFullYear()===y && e.d<=fin) r.yearCols.add(e.n);
+    if (!inM(e.d)) return;
+    (e.kind==='Inicio' ? r.ini : r.des).push({n:e.n, d:e.d}); if (!r.items.includes(e.it)) r.items.push(e.it); });
+  epItems().forEach(it=>{ const t = TESTS.find(t=>t.ids.includes(it.typeId)); if (!t) return;
+    if (!inM(parse(it.stages[0].at))) return; const r = R[ccOf(it)] || R['']; r.tests[t.k].push(it.label); r.items.push(it); });
+  Object.values(R).forEach(r=>{ r.full.sort((a,b)=>a-b); r.part.sort((a,b)=>a.n-b.n); r.days = r.part.reduce((s,p)=>s+p.d,0);
+    r.nTests = TESTS.reduce((s,t)=>s+r.tests[t.k].length,0); r.any = r.full.length||r.part.length||r.ini.length||r.des.length||r.nTests; });
+  return R;
+}
+function monthItems(y, m){
+  const a = new Date(y,m,1), b = new Date(y,m+1,0,23,59), out = new Set();
+  const opNums = new Set(columnLog().filter(c=>colDays(c,y,m)>0).map(c=>c.n));
+  epItems().forEach(it=>{
+    if ((startStage(it) || endStage(it)) && colNums(it).some(n=>opNums.has(n))) out.add(it);
+    if (TESTS.some(t=>t.ids.includes(it.typeId))){ const d = parse(it.stages[0].at); if (d>=a && d<=b) out.add(it); }
+  });
+  return [...out].sort((x,z)=>String(x.label).localeCompare(String(z.label),'es',{numeric:true}));
+}
+const partTxt = part => { const g = {}; part.forEach(p=>(g[p.d] ||= []).push(p.n));
+  return Object.entries(g).sort((a,b)=>b[0]-a[0]).map(([d,ns])=>`${ns.join('-')} (${d} ${+d===1?'día':'días'})`).join(' / '); };
+
+/* Balances base: se guardan solo en este navegador (precios incluidos), nunca en la página publicada */
+const EP_KEY = KEY+'-ep';
+let ep = {templates:{}, manual:{}};
+try { const s = JSON.parse(localStorage.getItem(EP_KEY)||'null'); if (s && s.templates) ep = {templates:s.templates, manual:s.manual||{}}; } catch(e){}
+const saveEp = () => { try { localStorage.setItem(EP_KEY, JSON.stringify(ep)); return true; } catch(e){ toast('Este navegador no tiene espacio para guardar los balances base'); return false; } };
+const toB64 = buf => { const u = new Uint8Array(buf); let s=''; for (let i=0;i<u.length;i+=8192) s += String.fromCharCode.apply(null, u.subarray(i,i+8192)); return btoa(s); };
+const fromB64 = b => Uint8Array.from(atob(b), c=>c.charCodeAt(0));
+const MES_RE = /(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|setiembre|octubre|noviembre|diciembre)(\s*)(\d{4})/i;
+function ccFromBalance(title, fname){
+  const t = fold(title)+' | '+fold(fname);
+  if (/pipeline|_ms_pw|ms-pg|ms_pg/.test(t)) return 'MS';
+  if (/caserones|esmeralda/.test(t)) return 'MS-A';
+  if (/lomas bayas|maqui/.test(t)) return 'MS-B';
+  if (/r&d|rd testing|_rd\b/.test(t)) return 'RD';
+  if (/industrial feasibility|_if\b|_if\./.test(t)) return 'IF';
+  if (/\bsg\b|_sg\b/.test(t)) return 'SG';
+  return '';
+}
+/* Abre la primera hoja de un balance editando el XML del archivo, para conservar formato, fórmulas e imágenes */
+async function openBalance(buf){
+  const zip = await window.JSZip.loadAsync(buf);
+  const P = new DOMParser(), S = new XMLSerializer();
+  const xml = async p => { const f = zip.file(p); if (!f) throw new Error('El archivo no es un Excel válido.'); return P.parseFromString(await f.async('string'), 'application/xml'); };
+  const out = d => { const s = S.serializeToString(d); return s.startsWith('<?xml') ? s : '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n'+s; };
+  const wbx = await xml('xl/workbook.xml'), rels = await xml('xl/_rels/workbook.xml.rels');
+  const sh = wbx.getElementsByTagName('sheet')[0], rid = sh.getAttribute('r:id');
+  const rel = [...rels.getElementsByTagName('Relationship')].find(r=>r.getAttribute('Id')===rid);
+  const tg = rel.getAttribute('Target'), sheetPath = tg.startsWith('/') ? tg.slice(1) : 'xl/'+tg.replace(/^\.\//,'');
+  const sst = zip.file('xl/sharedStrings.xml') ? [...(await xml('xl/sharedStrings.xml')).getElementsByTagName('si')].map(si=>[...si.getElementsByTagName('t')].map(t=>t.textContent).join('')) : [];
+  const doc = await xml(sheetPath), NS = doc.documentElement.namespaceURI, sd = doc.getElementsByTagName('sheetData')[0];
+  const rows = {}; [...sd.getElementsByTagName('row')].forEach(r=>rows[+r.getAttribute('r')] = r);
+  const colIdx = ref => [...ref.match(/^[A-Z]+/)[0]].reduce((n,ch)=>n*26+ch.charCodeAt(0)-64, 0);
+  const getCell = (ref, create) => {
+    const rn = +ref.match(/\d+$/)[0]; let row = rows[rn];
+    if (!row){ if (!create) return null; row = doc.createElementNS(NS,'row'); row.setAttribute('r', rn);
+      const nx = Object.keys(rows).map(Number).filter(k=>k>rn).sort((a,b)=>a-b)[0]; sd.insertBefore(row, nx ? rows[nx] : null); rows[rn] = row; }
+    let c = [...row.childNodes].find(x=>x.nodeName==='c' && x.getAttribute('r')===ref);
+    if (!c && create){ c = doc.createElementNS(NS,'c'); c.setAttribute('r', ref);
+      row.insertBefore(c, [...row.childNodes].find(x=>x.nodeName==='c' && colIdx(x.getAttribute('r'))>colIdx(ref)) || null); }
+    return c;
+  };
+  const text = ref => { const c = getCell(ref); if (!c) return ''; const t = c.getAttribute('t');
+    if (t==='s'){ const v = c.getElementsByTagName('v')[0]; return v ? (sst[+v.textContent]||'') : ''; }
+    if (t==='inlineStr') return [...c.getElementsByTagName('t')].map(x=>x.textContent).join('');
+    const v = c.getElementsByTagName('v')[0]; return v ? v.textContent : ''; };
+  const setVal = (ref, v) => { const c = getCell(ref, true); while (c.firstChild) c.removeChild(c.firstChild); c.removeAttribute('t');
+    if (typeof v==='number'){ const e = doc.createElementNS(NS,'v'); e.textContent = String(v); c.appendChild(e); }
+    else if (v!==''){ c.setAttribute('t','inlineStr'); const is = doc.createElementNS(NS,'is'), t = doc.createElementNS(NS,'t');
+      t.setAttributeNS('http://www.w3.org/XML/1998/namespace','xml:space','preserve'); t.textContent = v; is.appendChild(t); c.appendChild(is); } };
+  const nums = () => Object.keys(rows).map(Number).sort((a,b)=>a-b);
+  return {zip, wbx, doc, sheetPath, out, getCell, text, setVal, nums};
+}
+/* Lee la estructura del balance: secciones, ítems, unidades y precios */
+function parseTemplate(c, file){
+  const cc = ccFromBalance(c.text('C3'), file);
+  if (!cc) throw new Error('No reconozco su centro de costo (celda C3 «Centro de costos»).');
+  const secs = [], rows = [], cant = {}; let sec = 0;
+  for (const rn of c.nums()){
+    const aRaw = c.text('A'+rn).trim(), a = fold(aRaw), bName = c.text('B'+rn).trim(), b = fold(bName);
+    const ms = a.match(/^(\d+)\.\s/); if (ms){ sec = +ms[1]; secs.push({n:sec, title:aRaw}); continue; }
+    if (a.startsWith('cantidad')){ cant[sec] = rn; continue; }
+    if (!/^\d+[a-z]?$/.test(a) || !bName) continue;
+    const e = c.getCell('E'+rn), ef = e && e.getElementsByTagName('f')[0], ext = !!(ef && ef.textContent.includes('!'));
+    const eTxt = c.text('E'+rn), pn = Number(eTxt);
+    let kind = 'manual', key = '';
+    if (/operacion columnas/.test(b)){ kind = 'cal'; key = /no completo/.test(b) ? 'part' : 'full'; }
+    else { const t = TESTS.find(t=>t.re.test(b)); if (t){ kind = 'cal'; key = 'test:'+t.k; } }
+    rows.push({rn, sec, item:aRaw, act:bName, unit:c.text('C'+rn).trim(), frec:c.text('D'+rn).trim(),
+      price: eTxt!=='' && isFinite(pn) ? pn : null, ext, kind, key, q0:+c.text('F'+rn)||0, obs0:c.text('H'+rn).trim()});
+  }
+  return {cc, file, title:c.text('C3').trim(), head:c.text('B1').trim(), secs, rows, cant, hasPart: rows.some(r=>r.key==='part')};
+}
+const epMK = (y,m) => `${y}-${pad(m+1)}`;
+/* El precio de las filas que vienen de otra pestaña (preparación de soluciones) depende de las recetas del mes: no se usa el del mes anterior */
+const priceOf = row => row.ext ? null : row.price;
+function epQty(tpl, row, R, mk){
+  const r = R[tpl.cc];
+  if (row.kind==='cal'){
+    if (row.key==='full') return {q:r.full.length, obs:[r.full.length ? 'Columnas '+r.full.join('-') : '', !tpl.hasPart && r.part.length ? 'Revisar, mes no completo: '+partTxt(r.part) : ''].filter(Boolean).join(' · ')};
+    if (row.key==='part') return {q:r.days, obs:r.part.length ? 'Columnas '+partTxt(r.part) : ''};
+    const L = r.tests[row.key.slice(5)]; return {q:L.length, obs:L.join(' - ')};
+  }
+  const man = ((ep.manual[mk]||{})[tpl.cc]||{})[row.rn];
+  if (man) return {q:+man.q||0, obs:man.obs||''};
+  return {q: row.ext ? row.q0 : 0, obs: /^detalle/.test(fold(row.obs0)) ? row.obs0 : ''};
+}
+function epTotals(tpl, R, mk){
+  let total = 0, pending = false; const secT = {};
+  tpl.rows.forEach(row=>{ const {q} = epQty(tpl,row,R,mk);
+    const p = priceOf(row);
+    if (p==null){ if (q) pending = true; return; }
+    const v = p*q; total += v; secT[row.sec] = (secT[row.sec]||0) + v; });
+  return {total, pending, secT};
+}
+async function fillBalance(tpl, R, y, m){
+  const c = await openBalance(fromB64(tpl.b64)), mk = epMK(y,m), r = R[tpl.cc];
+  let tests = 0;
+  tpl.rows.forEach(row=>{ const {q, obs} = epQty(tpl,row,R,mk); c.setVal('F'+row.rn, q); c.setVal('H'+row.rn, obs); if (row.key.startsWith('test:')) tests += q; });
+  Object.entries(tpl.cant).forEach(([s, rn])=>{
+    if (+s===3) c.setVal('B'+rn, `${r.full.length + r.part.length} columnas`);
+    else if (+s===4) c.setVal('B'+rn, tests);
+    else if (!tpl.rows.some(x=>x.sec===+s && x.ext)) c.setVal('B'+rn, tpl.rows.filter(x=>x.sec===+s).reduce((t,x)=>t+(epQty(tpl,x,R,mk).q?1:0),0));
+  });
+  const hoy = new Date();
+  c.setVal('E1', mesTxt(y,m));
+  c.setVal('C2', `${pad(hoy.getDate())} de ${capi(MONL[hoy.getMonth()])} ${hoy.getFullYear()}`);
+  // Borra los resultados guardados de las fórmulas para que Excel las recalcule al abrir
+  [...c.doc.getElementsByTagName('c')].forEach(x=>{ if (x.getElementsByTagName('f').length) [...x.getElementsByTagName('v')].forEach(v=>v.remove()); });
+  let cp = c.wbx.getElementsByTagName('calcPr')[0];
+  if (!cp){ cp = c.wbx.createElementNS(c.wbx.documentElement.namespaceURI,'calcPr'); const ref = c.wbx.getElementsByTagName('definedNames')[0] || c.wbx.getElementsByTagName('sheets')[0]; ref.parentNode.insertBefore(cp, ref.nextSibling); }
+  cp.setAttribute('fullCalcOnLoad','1');
+  c.zip.file(c.sheetPath, c.out(c.doc)); c.zip.file('xl/workbook.xml', c.out(c.wbx));
+  const name = MES_RE.test(tpl.file) ? tpl.file.replace(MES_RE, (_,mm,sp)=>`${capi(MONL[m])}${sp}${y}`) : tpl.file.replace(/\.xlsx$/i, `_${capi(MONL[m])} ${y}.xlsx`);
+  return {name, blob: await c.zip.generateAsync({type:'blob', mimeType:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', compression:'DEFLATE'})};
+}
+
+/* ---------- Vista Estado de pago ---------- */
+let epCC = 'MS';
+function renderEP(){
+  const y = ui.y, m = ui.m, mk = epMK(y,m), R = edpMonth(y,m);
+  const tpls = ep.templates, nTpl = Object.keys(tpls).length;
+  const missing = monthItems(y,m).filter(it=>!ccOf(it));
+  const kpi = CC_LIST.map(cc=>{ const r = R[cc], t = tpls[cc], tot = t ? epTotals(t,R,mk) : null;
+    return `<button type="button" class="epk${cc===epCC?' on':''}" data-epsel="${cc}" style="--c:${CC_COLOR[cc]}" aria-pressed="${cc===epCC}">
+      <span class="epk-h"><b>${cc}</b><span>${esc(CC_NAME[cc])}</span></span>
+      <span class="epk-v">${tot ? clp(tot.total)+(tot.pending?'*':'') : '<span class="hint">sin balance base</span>'}</span>
+      <span class="epk-g"><span><b>${r.full.length+r.part.length}</b> col. operadas</span><span><b>${r.ini.length}</b> inicios</span><span><b>${r.des.length}</b> descargas</span><span><b>${r.yearCols.size}</b> cargadas en ${y}</span></span>
+    </button>`; }).join('');
+  const t = tpls[epCC], r = R[epCC];
+  let sheet;
+  if (t){
+    const tot = epTotals(t,R,mk), hoy = new Date();
+    const extra = TESTS.filter(x=>r.tests[x.k].length && !t.rows.some(row=>row.key==='test:'+x.k));
+    sheet = `<div class="eps">
+      <div class="eps-head"><div><span class="lbl">${esc(t.head || 'Reporte mensual operaciones metalúrgicas')}</span><h3>${esc(t.title)}</h3>
+        <span class="hint">Centro de costo ${epCC} · Fecha reporte: ${pad(hoy.getDate())} de ${capi(MONL[hoy.getMonth()])} ${hoy.getFullYear()}</span></div>
+        <div class="eps-tot"><span class="lbl">Valor total · ${mesTxt(y,m)}</span><b>${clp(tot.total)}</b>${tot.pending?'<span class="hint">* más el costo de reactivos, que la planilla calcula en su pestaña de soluciones</span>':''}</div></div>
+      ${t.secs.map(s=>{ const rows = t.rows.filter(x=>x.sec===s.n); if (!rows.length) return '';
+        return `<div class="eps-sec"><div class="eps-sh"><b>${esc(s.title)}</b><span>${clp(tot.secT[s.n]||0)}</span></div>
+        <div class="tblw"><table class="ept"><thead><tr><th>Ítem</th><th>Actividad</th><th>Unidad</th><th>Frecuencia</th><th class="r">Precio unitario</th><th class="r">Cantidad</th><th class="r">Valor total</th><th>Observaciones</th></tr></thead><tbody>
+        ${rows.map(row=>{ const {q, obs} = epQty(t,row,R,mk), p = priceOf(row), val = p==null ? null : p*q, man = row.kind!=='cal';
+          return `<tr class="${man?'':'cal'}${q?'':' z'}"><td>${esc(row.item)}</td><td>${esc(row.act)}${man?'':' <span class="tagc">calendario</span>'}</td><td>${esc(row.unit)}</td><td>${esc(row.frec)}</td>
+            <td class="r">${p!=null ? clp(p) : row.ext ? '<span class="hint" title="Se calcula en la pestaña de preparación de soluciones de la planilla">pestaña soluciones</span>' : '<span class="hint">sin precio</span>'}</td>
+            <td class="r">${man ? `<input type="number" min="0" step="0.5" id="epq-${row.rn}" data-epq="${row.rn}" value="${q}" aria-label="Cantidad ${esc(row.act)}">` : `<b>${q}</b>`}</td>
+            <td class="r">${val==null ? '—' : clp(val)}</td>
+            <td>${man ? `<input type="text" id="epo-${row.rn}" data-epo="${row.rn}" value="${esc(obs)}" aria-label="Observaciones ${esc(row.act)}">` : esc(obs)}</td></tr>`; }).join('')}
+        </tbody></table></div></div>`; }).join('')}
+      ${extra.length ? `<p class="hint">Del calendario pero sin ítem en esta planilla: ${extra.map(x=>`${esc(x.name)} (${r.tests[x.k].length}: ${esc(r.tests[x.k].join(', '))})`).join(' · ')}.</p>` : ''}
+      <div class="bar" style="justify-content:space-between"><span class="hint">Base: ${esc(t.file)}. Las filas «calendario» se calculan solas; las demás las completas tú y quedan guardadas para este mes.</span>
+        <button class="pri" type="button" id="epDl">Descargar balance ${epCC} · ${mesTxt(y,m)}</button></div>
+    </div>`;
+  } else {
+    sheet = `<div class="eps"><p class="empty">No hay balance base de ${epCC} (${esc(CC_NAME[epCC])}). Carga el .xlsx de cualquier mes con «Cargar balances base» y desde ahí se llena solo cada mes.</p>
+      <div class="dg">${[['Columnas mes completo', r.full.join('-')],['Columnas mes no completo', partTxt(r.part)],...TESTS.map(x=>[x.name, r.tests[x.k].join(' - ')])].filter(x=>x[1]).map(([k,v])=>`<span class="w">${esc(k)}</span><span>${esc(v)}</span>`).join('') || '<span class="hint">Sin actividades este mes.</span>'}</div></div>`;
+  }
+  const noStart = CC_LIST.concat('').flatMap(c=>R[c].noStart).sort((a,b)=>a-b);
+  $('main').innerHTML = `<div class="panel">
+    <div class="envh"><div><h2>Estado de pago · ${mesTxt(y,m)}</h2><p class="hint">Se llena con el calendario: columnas (desde la carga hasta la descarga, contando ambos días), sulfataciones, PLA, conductividad hidráulica, consumo de ácido, densidades, humedad y SX. Solo cuenta lo que ocurre dentro del mes.</p></div>
+      <div class="bar"><button type="button" id="epLoad">Cargar balances base (.xlsx)</button><input type="file" id="epFile" accept=".xlsx" multiple hidden>
+        <button type="button" id="epAll" ${nTpl?'':'disabled'}>Descargar todos los balances</button><button type="button" id="epLev">Levantamiento de columnas ${y}</button></div></div>
+    ${missing.length ? `<details class="alert" open><summary><b>⚠ ${missing.length} actividad${missing.length>1?'es':''} de este mes sin centro de costo</b>: no entran en ningún balance</summary>
+      <div class="epcc">${missing.map(it=>`<label><span>${esc(it.label)} <span class="hint">${esc(typeOf(it.typeId).name)}</span></span><select id="epcc-${it.id}" data-epcc="${it.id}">${['',...CC_LIST].map(c=>`<option value="${c}">${c||'— CC —'}</option>`).join('')}</select></label>`).join('')}</div></details>` : ''}
+    ${noStart.length ? `<p class="hint">Columnas sin carga registrada en el calendario (se cuentan desde el día 1 del mes en que empieza su lavado): ${noStart.join(', ')}. Para que los días sean exactos, programa su «Carga de columna» con la fecha real.</p>` : ''}
+    <div class="epks">${kpi}</div>
+    ${sheet}
+  </div>`;
+  $('epLoad').onclick = ()=>$('epFile').click();
+  $('epFile').onchange = async ev=>{
+    const files = [...ev.target.files]; ev.target.value = ''; if (!files.length) return;
+    if (!window.JSZip){ toast('No se pudo cargar el lector de Excel (revisa la conexión a internet)'); return; }
+    const ok = [], bad = [];
+    for (const f of files){ try { const buf = await f.arrayBuffer(); const tpl = parseTemplate(await openBalance(buf.slice(0)), f.name); tpl.b64 = toB64(buf); ep.templates[tpl.cc] = tpl; ok.push(tpl.cc); } catch(e){ bad.push(f.name); } }
+    if (ok.length){ epCC = ok[0]; saveEp(); }
+    render(); toast(ok.length ? `Balances base cargados: ${ok.join(', ')}${bad.length?` · no se pudo leer: ${bad.join(', ')}`:''}` : 'No se pudo leer ningún balance');
+  };
+  $('main').querySelectorAll('[data-epsel]').forEach(b=>b.onclick = ()=>{ epCC = b.dataset.epsel; render(); });
+  if ($('epDl')) $('epDl').onclick = async ()=>{ try { const f = await fillBalance(ep.templates[epCC], R, y, m); offerFile(f.name, f.blob); } catch(e){ toast('No se pudo generar el balance'); } };
+  $('epAll').onclick = async ()=>{ for (const cc of CC_LIST.filter(c=>ep.templates[c])){ try { const f = await fillBalance(ep.templates[cc], R, y, m); if (!(await offerFile(f.name, f.blob))) break; } catch(e){ toast('No se pudo generar el balance '+cc); } await new Promise(r=>setTimeout(r,700)); } };
+  $('epLev').onclick = ()=>{ const X = window.XLSX; if (!X){ toast('No se pudo cargar el generador de Excel'); return; }
+    offerFile(`Levantamiento_columnas_${y}.xlsx`, new Blob([X.write(buildLevantamiento(X, y), {bookType:'xlsx', type:'array'})])); };
+}
+document.addEventListener('change', e=>{
+  const x = e.target;
+  if (x.dataset.epcc!==undefined){ const it = itemOf(x.dataset.epcc); if (!it) return; if (x.value) it.cc = x.value; else delete it.cc; render(); toast(`${it.label}: centro de costo ${x.value||'sin asignar'}`); return; }
+  if (x.dataset.epq!==undefined || x.dataset.epo!==undefined){
+    const mk = epMK(ui.y, ui.m), rn = x.dataset.epq ?? x.dataset.epo, slot = ((ep.manual[mk] ||= {})[epCC] ||= {});
+    const cur = slot[rn] || (()=>{ const t = ep.templates[epCC], row = t.rows.find(r=>String(r.rn)===String(rn)); return epQty(t,row,edpMonth(ui.y,ui.m),mk); })();
+    slot[rn] = {q: x.dataset.epq!==undefined ? Math.max(0,+x.value||0) : +cur.q||0, obs: x.dataset.epo!==undefined ? x.value : (cur.obs||'')};
+    saveEp(); render();
+  }
+});
+
+/* ---------- Levantamiento de columnas: inicio (I), término (T) y meses completos (X) ---------- */
+function buildLevantamiento(X, y){
+  const wb = X.utils.book_new(), hoy = new Date(), bd = {style:'thin', color:{rgb:'C9D1DC'}}, border = {top:bd, bottom:bd, left:bd, right:bd};
+  const F = (o={}) => ({name:'Calibri', sz:11, ...o});
+  const ST = {
+    title:{font:F({sz:16, bold:true, color:{rgb:'1F3864'}})}, sub:{font:F({sz:10, italic:true, color:{rgb:'595959'}})},
+    head:{font:F({bold:true, color:{rgb:'FFFFFF'}}), fill:{fgColor:{rgb:'1F3864'}}, alignment:{horizontal:'center', vertical:'center', wrapText:true}, border},
+    cell:{font:F(), alignment:{horizontal:'center', vertical:'center'}, border}, left:{font:F(), alignment:{horizontal:'left', vertical:'center'}, border},
+    foot:{font:F({bold:true}), fill:{fgColor:{rgb:'E7ECF3'}}, alignment:{horizontal:'center', vertical:'center'}, border},
+    I:{font:F({bold:true, color:{rgb:'006100'}}), fill:{fgColor:{rgb:'C6EFCE'}}, alignment:{horizontal:'center'}, border},
+    T:{font:F({bold:true, color:{rgb:'9C0006'}}), fill:{fgColor:{rgb:'FFC7CE'}}, alignment:{horizontal:'center'}, border},
+    IT:{font:F({bold:true, color:{rgb:'7F6000'}}), fill:{fgColor:{rgb:'FFEB9C'}}, alignment:{horizontal:'center'}, border},
+    X:{font:F({color:{rgb:'1F3864'}}), fill:{fgColor:{rgb:'DDEBF7'}}, alignment:{horizontal:'center'}, border},
+  };
+  const proSheet = (title, sub, headers, rows, foot, widths, styler) => {
+    const n = headers.length, aoa = [[title], [sub], [], headers, ...rows, ...foot];
+    const ws = X.utils.aoa_to_sheet(aoa);
+    ws['!merges'] = [{s:{r:0,c:0}, e:{r:0,c:n-1}}, {s:{r:1,c:0}, e:{r:1,c:n-1}}];
+    for (let r=0; r<aoa.length; r++) for (let c=0; c<n; c++){
+      const ref = X.utils.encode_cell({r,c}); let cell = ws[ref];
+      if (r<3){ if (cell) cell.s = r===0 ? ST.title : ST.sub; continue; }
+      if (!cell) cell = ws[ref] = {t:'s', v:''};
+      if (r===3) cell.s = ST.head;
+      else if (r >= 4+rows.length) cell.s = c===0 ? {...ST.foot, alignment:{horizontal:'left'}} : ST.foot;
+      else cell.s = (styler && styler(r-4, c, cell.v)) || (typeof cell.v==='number' || c>0 ? ST.cell : ST.left);
+    }
+    ws['!cols'] = widths.map(w=>({wch:w}));
+    ws['!rows'] = [{hpt:26}, {hpt:16}, {hpt:8}, {hpt:30}];
+    ws['!autofilter'] = {ref: X.utils.encode_range({s:{r:3,c:0}, e:{r:3+rows.length, c:n-1}})};
+    return ws;
+  };
+  const log = columnLog(), sub = `Calendario Operacional · generado el ${fmtD(hoy)} ${hm(hoy)} · I = inicio (carga) · T = término (descarga) · X = mes completo en operación`;
+  const cell = (c, m) => { const d = colDays(c,y,m); if (!d) return '';
+    const s = c.start && c.start.getFullYear()===y && c.start.getMonth()===m, e = c.end && c.end.getFullYear()===y && c.end.getMonth()===m && !(c.start && c.end<c.start);
+    if (s && e) return `I${pad(c.start.getDate())} · T${pad(c.end.getDate())}`; if (s) return `I${pad(c.start.getDate())}`; if (e) return `T${pad(c.end.getDate())}`;
+    return d >= new Date(y,m+1,0).getDate() ? 'X' : `${d} d`; };
+  const cols = log.filter(c=>MONS.some((_,m)=>colDays(c,y,m)>0));
+  const activa = c => colDays(c, hoy.getFullYear(), hoy.getMonth())>0 && (!c.end || c.end<c.start || day0(c.end)>=day0(hoy)) ? 'SI' : 'NO';
+  const yd = c => MONS.reduce((s,_,m)=>s+colDays(c,y,m),0);
+  const rows1 = cols.map(c=>[c.n, c.cc||'Sin CC', activa(c), ...MONS.map((_,m)=>cell(c,m)), yd(c), c.start ? '' : 'Sin carga registrada: se cuenta desde el día 1 del mes de su lavado']);
+  const cnt = f => MONS.map((_,m)=>cols.filter(c=>f(c,m)).length);
+  const foot1 = [
+    ['Columnas en operación','','', ...cnt((c,m)=>colDays(c,y,m)>0), cols.length, ''],
+    ['Inicios (carga)','','', ...cnt((c,m)=>c.start && c.start.getFullYear()===y && c.start.getMonth()===m), cols.filter(c=>c.start && c.start.getFullYear()===y).length, ''],
+    ['Términos (descarga)','','', ...cnt((c,m)=>c.end && !(c.start && c.end<c.start) && c.end.getFullYear()===y && c.end.getMonth()===m), cols.filter(c=>c.end && c.end.getFullYear()===y).length, ''],
+  ];
+  const styler = (r,c,v) => { if (c===16) return {...ST.left, font:F({sz:10, italic:true, color:{rgb:'7F6000'}})}; if (c<3 || c>14 || !v) return null; const s = String(v); return s.includes('·') ? ST.IT : s[0]==='I' ? ST.I : s[0]==='T' ? ST.T : s==='X' ? ST.X : null; };
+  X.utils.book_append_sheet(wb, proSheet(`Levantamiento de columnas · ${y}`, sub, ['Columna','CC','Activa hoy', ...MONS, `Días ${y}`, 'Observación'], rows1, foot1, [10,9,10, ...MONS.map(()=>11), 10, 52], styler), `COLUMNAS ${y}`);
+  const ccs = CC_LIST.concat(log.some(c=>!c.cc) ? [''] : []);
+  const daysCC = cc => MONS.map((_,m)=>cols.filter(c=>c.cc===cc).reduce((s,c)=>s+colDays(c,y,m),0));
+  const rows2 = ccs.map(cc=>{ const d = daysCC(cc); return [cc||'Sin CC', CC_NAME[cc], ...d, d.reduce((s,x)=>s+x,0)]; });
+  const foot2 = [['Total', '', ...MONS.map((_,m)=>rows2.reduce((s,r)=>s+r[m+2],0)), rows2.reduce((s,r)=>s+r[14],0)]];
+  X.utils.book_append_sheet(wb, proSheet(`Días-columna por centro de costo · ${y}`, sub, ['CC','Centro de costo', ...MONS, 'Total'], rows2, foot2, [9,26, ...MONS.map(()=>9), 10]), 'DIAS POR CC');
+  const rows3 = cols.map(c=>[c.n, c.cc||'Sin CC', ...MONS.map((_,m)=>colDays(c,y,m)||''), yd(c)]);
+  const foot3 = [['Total', '', ...MONS.map((_,m)=>cols.reduce((s,c)=>s+colDays(c,y,m),0)), cols.reduce((s,c)=>s+yd(c),0)]];
+  X.utils.book_append_sheet(wb, proSheet(`Días de operación por columna · ${y}`, sub, ['Columna','CC', ...MONS, 'Total'], rows3, foot3, [10,9, ...MONS.map(()=>8), 10]), 'DIAS POR COLUMNA');
+  return wb;
+}
+
 /* ---------- Respaldo ---------- */
 const stamp = () => { const d=new Date(); return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}`; };
 function downloadBlob(blob, name){ const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },1500); }
@@ -1668,9 +2088,9 @@ function buildWorkbook(X){
   X.utils.book_append_sheet(wb, makeSheet(X, ['FECHA','DÍA','CARGA COLUMNAS','INICIO RIEGO','INICIO LAVADO','INICIO DRENAJE','DESCARGA Y MUESTREO','INGRESO HORNO','SACAR DEL HORNO / PESAJE','RIPIO PENDIENTE DE ENVÍO'], res, [13,11,22,24,18,18,18,18,22,22], true, 0), 'RESUMEN POR DÍA');
   const env = state.envios.filter(e=>!e.del).slice().sort((a,b)=>(a.fecha||'').localeCompare(b.fecha||'')).map(e=>[e.fecha?parse(e.fecha):'', e.cc||'', numOr(e.muestra), e.cond||'', e.recep?parse(e.recep):'-', e.analisis||'', e.envProc?'Sí':'No', e.envAna?'Sí':'No', e.tipo||'Ripio']);
   X.utils.book_append_sheet(wb, makeSheet(X, ['Fecha envío','CC','ID Muestra','Condiciones','Fecha Recepción','Analisis','Enviado a procesamiento','Enviado a análisis','Tipo'], env, [13,8,22,12,15,42,14,12,10], true, 0), 'ENVIO A PROCESAMIENTO');
-  const ev = []; state.items.forEach(it=>{ const t=typeOf(it.typeId); it.stages.forEach((s,i)=>{ const d=parse(s.at); ev.push([t.name, numOr(it.label), `${i+1}/${it.stages.length}`, s.name, d, ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'][d.getDay()], s.done?'Hecha':'Pendiente', outOfRange(s)?'Sí':'', fieldTxt(it).join(' · '), it.notes||'']); }); });
-  ev.sort((a,b)=>a[4]-b[4]);
-  X.utils.book_append_sheet(wb, makeSheet(X, ['Tipo de actividad','Muestra / columna','N° etapa','Etapa','Fecha','Día','Estado','Fuera de rango (fin de semana)','Datos','Notas'], ev, [34,18,9,40,17,11,11,16,40,30]), 'TODAS LAS ACTIVIDADES');
+  const ev = []; state.items.forEach(it=>{ const t=typeOf(it.typeId); it.stages.forEach((s,i)=>{ const d=parse(s.at); ev.push([phaseName(t,s), numOr(it.label), opOf(it,s), `${i+1}/${it.stages.length}`, s.name, d, ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'][d.getDay()], s.done?'Hecha':'Pendiente', outOfRange(s)?'Sí':'', fieldTxt(it).join(' · '), it.notes||'']); }); });
+  ev.sort((a,b)=>a[5]-b[5]);
+  X.utils.book_append_sheet(wb, makeSheet(X, ['Tipo de actividad','Muestra / columna','Operador','N° etapa','Etapa','Fecha','Día','Estado','Fuera de rango (fin de semana)','Datos','Notas'], ev, [34,18,10,9,40,17,11,11,16,40,30]), 'TODAS LAS ACTIVIDADES');
   const done = state.items.filter(isDone).sort((a,b)=>(a.completedAt||'').localeCompare(b.completedAt||'')).map(it=>{ const ds=it.stages.map(s=>parse(s.at));
     return [typeOf(it.typeId).name, numOr(it.label), new Date(Math.min(...ds)), new Date(Math.max(...ds)), it.completedAt?new Date(it.completedAt):'', it.stages.map((s,i)=>`${i+1}. ${s.name} (${fmtD(parse(s.at))} ${hm(parse(s.at))})`).join(' | '), fieldTxt(it).join(' · '), it.notes||'']; });
   X.utils.book_append_sheet(wb, makeSheet(X, ['Tipo de actividad','Muestra / columna','Inicio','Término','Completada el','Etapas','Datos','Notas'], done, [34,18,17,17,17,70,40,30]), 'COMPLETADAS');
@@ -1777,6 +2197,8 @@ $('vMonth').onclick = ()=>{ ui.view='month'; render(); };
 $('vAgenda').onclick = ()=>{ ui.view='agenda'; render(); };
 $('vDone').onclick = ()=>{ ui.view='done'; render(); };
 $('vEnv').onclick = ()=>{ ui.view='envios'; render(); };
+$('vEp').onclick = ()=>{ ui.view='ep'; render(); };
+$('fOp').onchange = e=>{ ui.op = e.target.value; render(); };
 $('pDay').value = dkey(new Date());
 $('pBtn').onclick = ()=>{ const v = $('pDay').value; if (v) printDay(v); else toast('Elige el día que quieres imprimir'); };
 $('q').oninput = e=>{ ui.q=e.target.value.trim().toLowerCase(); render(); };
